@@ -79,20 +79,16 @@ export function createList() {
     newUl.append(newLi);
     document.body.append(newUl);
     document.body.append(newButton);
-    let newLink = document.getElementsByTagName('li');
     let knopka = document.getElementsByTagName('button')[0];
-    newLink[0].addEventListener(
-        'click',
-        () => (newLink[0].textContent = 'Пункт!'),
-    );
+    document.querySelector('ul').addEventListener('click', function (event) {
+        if (event.target && event.target.nodeName === 'LI') {
+            event.target.textContent = 'Пункт!';
+        }
+    });
     knopka.addEventListener('click', function () {
         let spisok = document.getElementsByTagName('ul')[0];
         let li = document.createElement('li');
         li.textContent = 'Пункт';
         spisok.append(li);
-        newLink[1].addEventListener(
-            'click',
-            () => (newLink[1].textContent = 'Пункт!'),
-        );
     });
 }
